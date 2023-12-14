@@ -2,10 +2,10 @@
 C:\Program Files\Microsoft Visual Studio\2022\Preview\VC\Tools\MSVC\14.38.33129\include\filesystem(12): warning STL4038: The contents of <filesystem> are available only with C++17 or later.
 C:\VsCode\OpenGL-SolarSystem\main.cpp(47,22): warning C4244: '=': conversion from 'LONG' to 'float', possible loss of data
 C:\VsCode\OpenGL-SolarSystem\main.cpp(48,20): warning C4244: '=': conversion from 'LONG' to 'float', possible loss of data
-C:\VsCode\OpenGL-SolarSystem\main.cpp(166,54): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\VsCode\OpenGL-SolarSystem\main.cpp(166,40): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\VsCode\OpenGL-SolarSystem\main.cpp(526,65): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-C:\VsCode\OpenGL-SolarSystem\main.cpp(527,65): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-C:\VsCode\OpenGL-SolarSystem\main.cpp(546,65): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-C:\VsCode\OpenGL-SolarSystem\main.cpp(547,65): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+C:\VsCode\OpenGL-SolarSystem\main.cpp(158,54): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\VsCode\OpenGL-SolarSystem\main.cpp(158,40): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\VsCode\OpenGL-SolarSystem\main.cpp(422,65): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+C:\VsCode\OpenGL-SolarSystem\main.cpp(423,65): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+C:\VsCode\OpenGL-SolarSystem\main.cpp(442,65): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+C:\VsCode\OpenGL-SolarSystem\main.cpp(443,65): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
   DiamondEngine.vcxproj -> C:\VsCode\OpenGL-SolarSystem\x64\Debug\DiamondEngine.exe

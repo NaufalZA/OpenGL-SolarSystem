@@ -100,14 +100,6 @@ struct Character {
 std::map<GLchar, Character> Characters;
 GLuint textVAO, textVBO;
 
-//struct PlanetInfo {
-//	std::string Name;
-//	std::string OrbitSpeed;
-//	std::string Mass;
-//	std::string Gravity;
-//};
-//PlanetInfo Info;
-
 void mouse_callback(GLFWwindow* window, double xpos, double ypos)
 {
 	if (firstMouse)
@@ -187,67 +179,6 @@ int main() {
 	}
 	/* LOAD GLAD */
 
-
-	/* CONFIGURATION FOR TEXT RENDER */
-	//FT_Library ft;
-	//if (FT_Init_FreeType(&ft))
-	//	std::cout << "ERROR::FREETYPE: Could not init FreeType Library" << std::endl;
-
-	//FT_Face face;
-	//if (FT_New_Face(ft, "fonts/ff.otf", 0, &face))
-	//	std::cout << "ERROR::FREETYPE: Failed to load font" << std::endl;
-
-	//// Set size to load glyphs as
-	//FT_Set_Pixel_Sizes(face, 0, 48);
-
-	//// Disable byte-alignment restriction
-	//glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
-
-	//// Load first 128 characters of ASCII set
-	//for (GLubyte c = 0; c < 128; c++)
-	//{
-	//	// Load character glyph 
-	//	if (FT_Load_Char(face, c, FT_LOAD_RENDER))
-	//	{
-	//		std::cout << "ERROR::FREETYTPE: Failed to load Glyph" << std::endl;
-	//		continue;
-	//	}
-	//	// Generate texture
-	//	GLuint texture;
-	//	glGenTextures(1, &texture);
-	//	glBindTexture(GL_TEXTURE_2D, texture);
-	//	glTexImage2D(
-	//		GL_TEXTURE_2D,
-	//		0,
-	//		GL_RED,
-	//		face->glyph->bitmap.width,
-	//		face->glyph->bitmap.rows,
-	//		0,
-	//		GL_RED,
-	//		GL_UNSIGNED_BYTE,
-	//		face->glyph->bitmap.buffer
-	//	);
-	//	// Set texture options
-	//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-	//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-	//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-	//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	//	// Now store character for later use
-	//	Character character = {
-	//		texture,
-	//		glm::ivec2(face->glyph->bitmap.width, face->glyph->bitmap.rows),
-	//		glm::ivec2(face->glyph->bitmap_left, face->glyph->bitmap_top),
-	//		face->glyph->advance.x
-	//	};
-	//	Characters.insert(std::pair<GLchar, Character>(c, character));
-	//}
-	//glBindTexture(GL_TEXTURE_2D, 0);
-	//// Destroy FreeType once we're finished
-	//FT_Done_Face(face);
-	//FT_Done_FreeType(ft);
-	///* CONFIGURATION FOR TEXT RENDER */
-
-
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_MULTISAMPLE);
 	glEnable(GL_BLEND);
@@ -257,13 +188,7 @@ int main() {
 	Shader SimpleShader("simpleVS.vs", "simpleFS.fs");
 	Shader SkyboxShader("skybox.vs", "skybox.fs");
 	Shader texShader("simpleVS.vs", "texFS.fs");
-	//Shader TextShader("TextShader.vs", "TextShader.fs");
 	/* SHADERS */
-
-	// PROJECTION FOR TEXT RENDER
-		//glm::mat4 Text_projection = glm::ortho(0.0f, SCREEN_WIDTH, 0.0f, SCREEN_HEIGHT);
-		//TextShader.Use();
-		//glUniformMatrix4fv(glGetUniformLocation(TextShader.ID, "projection"), 1, GL_FALSE, glm::value_ptr(Text_projection));
 
 	float cube[] = {
 		-0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
@@ -394,43 +319,14 @@ int main() {
 	glBindVertexArray(0);
 	/* VAO-VBO for ORBITS*/
 
-	///* TEXT RENDERING VAO-VBO*/
-	//glGenVertexArrays(1, &textVAO);
-	//glGenBuffers(1, &textVBO);
-	//glBindVertexArray(textVAO);
-	//glBindBuffer(GL_ARRAY_BUFFER, textVBO);
-	//glBufferData(GL_ARRAY_BUFFER, sizeof(GLfloat) * 6 * 4, NULL, GL_DYNAMIC_DRAW);
-	//glEnableVertexAttribArray(0);
-	//glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 4 * sizeof(GLfloat), 0);
-	//glBindBuffer(GL_ARRAY_BUFFER, 0);
-	//glBindVertexArray(0);
-	///* TEXT RENDERING VAO-VBO*/
-
 	/* LOAD TEXTURES */
 	unsigned int texture_earth = loadTexture("resources/planets/earth2k.jpg");
-	//unsigned int t_sun = loadTexture("resources/planets/2k_sun.jpg");
 	unsigned int texture_moon = loadTexture("resources/planets/2k_moon.jpg");
-	//unsigned int texture_mercury = loadTexture("resources/planets/2k_mercury.jpg");
-	//unsigned int texture_venus = loadTexture("resources/planets/2k_mercury.jpg");
-	//unsigned int texture_mars = loadTexture("resources/planets/2k_mars.jpg");
-	//unsigned int texture_jupiter = loadTexture("resources/planets/2k_jupiter.jpg");
-	//unsigned int texture_saturn = loadTexture("resources/planets/2k_saturn.jpg");
-	//unsigned int texture_uranus = loadTexture("resources/planets/2k_uranus.jpg");
-	//unsigned int texture_neptune = loadTexture("resources/planets/2k_neptune.jpg");
-	//unsigned int texture_saturn_ring = loadTexture("resources/planets/r.jpg");
 	unsigned int texture_earth_clouds = loadTexture("resources/planets/2k_earth_clouds.jpg");
 	/* LOAD TEXTURES */
 
 	/* SPHERE GENERATION */
-	//Sphere Sun(100.0f, 36 * 5, 18 * 5);
-	//Sphere Mercury(10.0f, 36, 18);
-	//Sphere Venus(12.0f, 36, 18);
 	Sphere Earth(11.8f, 36, 18);
-	//Sphere Mars(8.0f, 36, 18);
-	//Sphere Jupiter(40.0f, 36, 18);
-	//Sphere Saturn(37.0f, 36, 18);
-	//Sphere Uranus(30.0f, 36, 18);
-	//Sphere Neptune(30.0f, 36, 19);
 	Sphere Moon(5.5f, 36, 18);
 	/* SPHERE GENERATION */
 
@@ -603,6 +499,7 @@ int main() {
 
 		switch (PlanetView)
 		{
+
 		case 3:
 			viewX = sin(glfwGetTime() * PlanetSpeed * 0.55f) * 100.0f * 5.5f * 1.2f;
 			viewZ = cos(glfwGetTime() * PlanetSpeed * 0.55f) * 100.0f * 5.5f * 1.2f;
