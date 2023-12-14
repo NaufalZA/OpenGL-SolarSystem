@@ -62,7 +62,7 @@ glm::vec3 PlanetPos = glm::vec3(0.0f, 0.0f, 0.0f);
 GLfloat lastX = (GLfloat)(SCREEN_WIDTH / 2.0);
 GLfloat lastY = (GLfloat)(SCREEN_HEIGHT / 2.0);
 float PlanetSpeed = .1f;
-int PlanetView = 0;
+int PlanetView = 3;
 
 bool keys[1024];
 GLfloat SceneRotateY = 0.0f;
@@ -395,7 +395,7 @@ int main() {
 			SceneRotateY = 0.0f;
 			SceneRotateX = 0.0f;
 		}
-		if (camera.FreeCam || PlanetView > 0)
+		if (camera.FreeCam || PlanetView > 2)
 			glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 		else glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
 
@@ -540,14 +540,14 @@ void processInput(GLFWwindow* window)
 
 	if (glfwGetKey(window, GLFW_KEY_F1) == GLFW_PRESS)
 	{
-		PlanetView = 0;
+		PlanetView = 2;
 		onFreeCam = false;
 		camera.FreeCam = true;
 	}
 
 	if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS)
 	{
-		PlanetView = 0;
+		PlanetView = 2;
 		onFreeCam = true;
 		camera.FreeCam = false;
 		camera.Position = glm::vec3(0.0f, 250.0f, -450.0f);
