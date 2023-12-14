@@ -257,49 +257,49 @@ int main() {
 	Shader SimpleShader("simpleVS.vs", "simpleFS.fs");
 	Shader SkyboxShader("skybox.vs", "skybox.fs");
 	Shader texShader("simpleVS.vs", "texFS.fs");
-	Shader TextShader("TextShader.vs", "TextShader.fs");
+	//Shader TextShader("TextShader.vs", "TextShader.fs");
 	/* SHADERS */
 
 	// PROJECTION FOR TEXT RENDER
-		glm::mat4 Text_projection = glm::ortho(0.0f, SCREEN_WIDTH, 0.0f, SCREEN_HEIGHT);
-		TextShader.Use();
-		glUniformMatrix4fv(glGetUniformLocation(TextShader.ID, "projection"), 1, GL_FALSE, glm::value_ptr(Text_projection));
+		//glm::mat4 Text_projection = glm::ortho(0.0f, SCREEN_WIDTH, 0.0f, SCREEN_HEIGHT);
+		//TextShader.Use();
+		//glUniformMatrix4fv(glGetUniformLocation(TextShader.ID, "projection"), 1, GL_FALSE, glm::value_ptr(Text_projection));
 
 	float cube[] = {
-		//-0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
-		// 0.5f, -0.5f, -0.5f,  1.0f, 0.0f,
-		// 0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-		// 0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-		//-0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
-		//-0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
+		-0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
+		 0.5f, -0.5f, -0.5f,  1.0f, 0.0f,
+		 0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+		 0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+		-0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
+		-0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
 
-		//-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-		// 0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-		// 0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
-		// 0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
-		//-0.5f,  0.5f,  0.5f,  0.0f, 1.0f,
-		//-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+		-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+		 0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
+		 0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
+		 0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
+		-0.5f,  0.5f,  0.5f,  0.0f, 1.0f,
+		-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
 
-		//-0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-		//-0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-		//-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-		//-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-		//-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-		//-0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+		-0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+		-0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+		-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+		-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+		-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+		-0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
 
-		// 0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-		// 0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-		// 0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-		// 0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-		// 0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-		// 0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+		 0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+		 0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+		 0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+		 0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+		 0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+		 0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
 
-		//-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-		// 0.5f, -0.5f, -0.5f,  1.0f, 1.0f,
-		// 0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-		// 0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-		//-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-		//-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+		-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+		 0.5f, -0.5f, -0.5f,  1.0f, 1.0f,
+		 0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
+		 0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
+		-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+		-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
 
 		-0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
 		 0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
