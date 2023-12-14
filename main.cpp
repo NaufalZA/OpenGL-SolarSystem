@@ -266,40 +266,40 @@ int main() {
 		glUniformMatrix4fv(glGetUniformLocation(TextShader.ID, "projection"), 1, GL_FALSE, glm::value_ptr(Text_projection));
 
 	float cube[] = {
-		-0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
-		 0.5f, -0.5f, -0.5f,  1.0f, 0.0f,
-		 0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-		 0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-		-0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
-		-0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
+		//-0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
+		// 0.5f, -0.5f, -0.5f,  1.0f, 0.0f,
+		// 0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+		// 0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+		//-0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
+		//-0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
 
-		-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-		 0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-		 0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
-		 0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
-		-0.5f,  0.5f,  0.5f,  0.0f, 1.0f,
-		-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+		//-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+		// 0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
+		// 0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
+		// 0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
+		//-0.5f,  0.5f,  0.5f,  0.0f, 1.0f,
+		//-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
 
-		-0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-		-0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-		-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-		-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-		-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-		-0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+		//-0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+		//-0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+		//-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+		//-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+		//-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+		//-0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
 
-		 0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-		 0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-		 0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-		 0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-		 0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-		 0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+		// 0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+		// 0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+		// 0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+		// 0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+		// 0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+		// 0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
 
-		-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-		 0.5f, -0.5f, -0.5f,  1.0f, 1.0f,
-		 0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-		 0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-		-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-		-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+		//-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+		// 0.5f, -0.5f, -0.5f,  1.0f, 1.0f,
+		// 0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
+		// 0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
+		//-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+		//-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
 
 		-0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
 		 0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
@@ -394,17 +394,17 @@ int main() {
 	glBindVertexArray(0);
 	/* VAO-VBO for ORBITS*/
 
-	/* TEXT RENDERING VAO-VBO*/
-	glGenVertexArrays(1, &textVAO);
-	glGenBuffers(1, &textVBO);
-	glBindVertexArray(textVAO);
-	glBindBuffer(GL_ARRAY_BUFFER, textVBO);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(GLfloat) * 6 * 4, NULL, GL_DYNAMIC_DRAW);
-	glEnableVertexAttribArray(0);
-	glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 4 * sizeof(GLfloat), 0);
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
-	glBindVertexArray(0);
-	/* TEXT RENDERING VAO-VBO*/
+	///* TEXT RENDERING VAO-VBO*/
+	//glGenVertexArrays(1, &textVAO);
+	//glGenBuffers(1, &textVBO);
+	//glBindVertexArray(textVAO);
+	//glBindBuffer(GL_ARRAY_BUFFER, textVBO);
+	//glBufferData(GL_ARRAY_BUFFER, sizeof(GLfloat) * 6 * 4, NULL, GL_DYNAMIC_DRAW);
+	//glEnableVertexAttribArray(0);
+	//glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 4 * sizeof(GLfloat), 0);
+	//glBindBuffer(GL_ARRAY_BUFFER, 0);
+	//glBindVertexArray(0);
+	///* TEXT RENDERING VAO-VBO*/
 
 	/* LOAD TEXTURES */
 	unsigned int texture_earth = loadTexture("resources/planets/earth2k.jpg");
