@@ -422,15 +422,15 @@ int main() {
 	/* LOAD TEXTURES */
 
 	/* SPHERE GENERATION */
-	Sphere Sun(100.0f, 36 * 5, 18 * 5);
-	Sphere Mercury(10.0f, 36, 18);
-	Sphere Venus(12.0f, 36, 18);
+	//Sphere Sun(100.0f, 36 * 5, 18 * 5);
+	//Sphere Mercury(10.0f, 36, 18);
+	//Sphere Venus(12.0f, 36, 18);
 	Sphere Earth(11.8f, 36, 18);
-	Sphere Mars(8.0f, 36, 18);
-	Sphere Jupiter(40.0f, 36, 18);
-	Sphere Saturn(37.0f, 36, 18);
-	Sphere Uranus(30.0f, 36, 18);
-	Sphere Neptune(30.0f, 36, 19);
+	//Sphere Mars(8.0f, 36, 18);
+	//Sphere Jupiter(40.0f, 36, 18);
+	//Sphere Saturn(37.0f, 36, 18);
+	//Sphere Uranus(30.0f, 36, 18);
+	//Sphere Neptune(30.0f, 36, 19);
 	Sphere Moon(5.5f, 36, 18);
 	/* SPHERE GENERATION */
 
