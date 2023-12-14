@@ -30,7 +30,7 @@
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void processInput(GLFWwindow *window);
-void RenderText(Shader &s, std::string text, GLfloat x, GLfloat y, GLfloat scale, glm::vec3 color);
+//void RenderText(Shader &s, std::string text, GLfloat x, GLfloat y, GLfloat scale, glm::vec3 color);
 unsigned int loadTexture(char const * path);
 unsigned int loadCubemap(std::vector<std::string> faces);
 //void ShowInfo(Shader &s);
@@ -855,8 +855,8 @@ int main() {
 			//	RenderText(TextShader, "STATIC CAM ", SCREEN_WIDTH - 200.0f, SCREEN_HEIGHT - 30.0f, 0.35f, glm::vec3(0.7f, 0.7f, 0.11f));
 			break;
 		}
-		if (PlanetView > 0)
-			RenderText(TextShader, "PLANET CAM ", SCREEN_WIDTH - 200.0f, SCREEN_HEIGHT - 30.0f, 0.35f, glm::vec3(0.7f, 0.7f, 0.11f));
+		//if (PlanetView > 0)
+		//	RenderText(TextShader, "PLANET CAM ", SCREEN_WIDTH - 200.0f, SCREEN_HEIGHT - 30.0f, 0.35f, glm::vec3(0.7f, 0.7f, 0.11f));
 		/* PLANET TRACKING + SHOW INFO OF PLANET */
 
 
@@ -908,26 +908,26 @@ void processInput(GLFWwindow *window)
 		camera.ProcessMouseMovement(xoff,yoff);
 	}
 
-	if (glfwGetKey(window, GLFW_KEY_1) == GLFW_PRESS)
-	{
-		PlanetView = 1;
-		Info.Name = "MERCURY";
-		Info.OrbitSpeed = "47,87";
-		Info.Mass = "0.32868";
-		Info.Gravity = "0.38";
-		onFreeCam = false;
-		camera.FreeCam = false;
-	}
-	if (glfwGetKey(window, GLFW_KEY_2) == GLFW_PRESS)
-	{
-		PlanetView = 2;
-		Info.Name = "VENUS";
-		Info.OrbitSpeed = "35,02";
-		Info.Mass = "0.32868";
-		Info.Gravity = "0.90";
-		onFreeCam = false;
-		camera.FreeCam = false;
-	}
+	//if (glfwGetKey(window, GLFW_KEY_1) == GLFW_PRESS)
+	//{
+	//	PlanetView = 1;
+	//	Info.Name = "MERCURY";
+	//	Info.OrbitSpeed = "47,87";
+	//	Info.Mass = "0.32868";
+	//	Info.Gravity = "0.38";
+	//	onFreeCam = false;
+	//	camera.FreeCam = false;
+	//}
+	//if (glfwGetKey(window, GLFW_KEY_2) == GLFW_PRESS)
+	//{
+	//	PlanetView = 2;
+	//	Info.Name = "VENUS";
+	//	Info.OrbitSpeed = "35,02";
+	//	Info.Mass = "0.32868";
+	//	Info.Gravity = "0.90";
+	//	onFreeCam = false;
+	//	camera.FreeCam = false;
+	//}
 	if (glfwGetKey(window, GLFW_KEY_3) == GLFW_PRESS)
 	{
 		PlanetView = 3;
@@ -938,55 +938,55 @@ void processInput(GLFWwindow *window)
 		onFreeCam = false;
 		camera.FreeCam = false;
 	}
-	if (glfwGetKey(window, GLFW_KEY_4) == GLFW_PRESS)
-	{
-		PlanetView = 4;
-		Info.Name = "MARS";
-		Info.OrbitSpeed = "24,13";
-		Info.Mass = "0.63345";
-		Info.Gravity = "0.38";
-		onFreeCam = false;
-		camera.FreeCam = false;
-	}
-	if (glfwGetKey(window, GLFW_KEY_5) == GLFW_PRESS)
-	{
-		PlanetView = 5;
-		Info.Name = "JUPITER";
-		Info.OrbitSpeed = "13,07";
-		Info.Mass = "1876.64328";
-		Info.Gravity = "2.55";
-		onFreeCam = false;
-	}
-	if (glfwGetKey(window, GLFW_KEY_6) == GLFW_PRESS)
-	{
-		PlanetView = 6;
-		Info.Name = "SATURN";
-		Info.OrbitSpeed = "9,67";
-		Info.Mass = "561.80376";
-		Info.Gravity = "1.12";
-		onFreeCam = false;
-		camera.FreeCam = false;
-	}
-	if (glfwGetKey(window, GLFW_KEY_7) == GLFW_PRESS)
-	{
-		PlanetView = 7;
-		Info.Name = "URANUS";
-		Info.OrbitSpeed = "6,84";
-		Info.Mass = "86.05440";
-		Info.Gravity = "0.97";
-		onFreeCam = false;
-		camera.FreeCam = false;
-	}
-	if (glfwGetKey(window, GLFW_KEY_8) == GLFW_PRESS)
-	{
-		PlanetView = 8;
-		Info.Name = "NEPTUNE";
-		Info.OrbitSpeed = "5,48";
-		Info.Mass = "101.59200";
-		Info.Gravity = "1.17";
-		onFreeCam = false;
-		camera.FreeCam = false;
-	}
+	//if (glfwGetKey(window, GLFW_KEY_4) == GLFW_PRESS)
+	//{
+	//	PlanetView = 4;
+	//	Info.Name = "MARS";
+	//	Info.OrbitSpeed = "24,13";
+	//	Info.Mass = "0.63345";
+	//	Info.Gravity = "0.38";
+	//	onFreeCam = false;
+	//	camera.FreeCam = false;
+	//}
+	//if (glfwGetKey(window, GLFW_KEY_5) == GLFW_PRESS)
+	//{
+	//	PlanetView = 5;
+	//	Info.Name = "JUPITER";
+	//	Info.OrbitSpeed = "13,07";
+	//	Info.Mass = "1876.64328";
+	//	Info.Gravity = "2.55";
+	//	onFreeCam = false;
+	//}
+	//if (glfwGetKey(window, GLFW_KEY_6) == GLFW_PRESS)
+	//{
+	//	PlanetView = 6;
+	//	Info.Name = "SATURN";
+	//	Info.OrbitSpeed = "9,67";
+	//	Info.Mass = "561.80376";
+	//	Info.Gravity = "1.12";
+	//	onFreeCam = false;
+	//	camera.FreeCam = false;
+	//}
+	//if (glfwGetKey(window, GLFW_KEY_7) == GLFW_PRESS)
+	//{
+	//	PlanetView = 7;
+	//	Info.Name = "URANUS";
+	//	Info.OrbitSpeed = "6,84";
+	//	Info.Mass = "86.05440";
+	//	Info.Gravity = "0.97";
+	//	onFreeCam = false;
+	//	camera.FreeCam = false;
+	//}
+	//if (glfwGetKey(window, GLFW_KEY_8) == GLFW_PRESS)
+	//{
+	//	PlanetView = 8;
+	//	Info.Name = "NEPTUNE";
+	//	Info.OrbitSpeed = "5,48";
+	//	Info.Mass = "101.59200";
+	//	Info.Gravity = "1.17";
+	//	onFreeCam = false;
+	//	camera.FreeCam = false;
+	//}
 
 } 
 
