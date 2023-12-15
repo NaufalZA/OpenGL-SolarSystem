@@ -30,23 +30,15 @@
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void processInput(GLFWwindow* window);
-//void RenderText(Shader &s, std::string text, GLfloat x, GLfloat y, GLfloat scale, glm::vec3 color);
 unsigned int loadTexture(char const* path);
 unsigned int loadCubemap(std::vector<std::string> faces);
-//void ShowInfo(Shader &s);
 void GetDesktopResolution(float& horizontal, float& vertical)
 {
 	RECT desktop;
-	// Get a handle to the desktop window
 	const HWND hDesktop = GetDesktopWindow();
-	// Get the size of screen to the variable desktop
 	GetWindowRect(hDesktop, &desktop);
-	// The top left corner will have coordinates (0,0)
-	// and the bottom right corner will have coordinates
-	// (horizontal, vertical)
 	horizontal = desktop.right;
 	vertical = desktop.bottom;
-
 }
 
 GLfloat deltaTime = 0.0f;
@@ -62,7 +54,7 @@ glm::vec3 PlanetPos = glm::vec3(0.0f, 0.0f, 0.0f);
 GLfloat lastX = (GLfloat)(SCREEN_WIDTH / 2.0);
 GLfloat lastY = (GLfloat)(SCREEN_HEIGHT / 2.0);
 float PlanetSpeed = .1f;
-int PlanetView = 3;
+int PlanetView = 0;
 
 bool keys[1024];
 GLfloat SceneRotateY = 0.0f;
@@ -326,6 +318,7 @@ int main() {
 	/* LOAD TEXTURES */
 
 	/* SPHERE GENERATION */
+	Sphere Venus(12.0f, 36, 18);
 	Sphere Earth(11.8f, 36, 18);
 	Sphere Moon(5.5f, 36, 18);
 	/* SPHERE GENERATION */
@@ -378,7 +371,6 @@ int main() {
 				camera.MovementSpeed = 200.0f;
 			if (camera.Position.y < 70.f && camera.Position.y > 50.0f)
 				camera.MovementSpeed = 100.0f;
-
 			if (camera.Position.y > 200 && camera.Position.y < 400.0f)
 				camera.MovementSpeed = 400.0f;
 			if (camera.Position.y > 125.f && camera.Position.y < 200.0f)
@@ -395,7 +387,7 @@ int main() {
 			SceneRotateY = 0.0f;
 			SceneRotateX = 0.0f;
 		}
-		if (camera.FreeCam || PlanetView > 2)
+		if (camera.FreeCam || PlanetView > 0)
 			glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 		else glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
 
@@ -419,8 +411,8 @@ int main() {
 
 		/* EARTH */
 		glm::mat4 model_earth;
-		xx = sin(glfwGetTime() * PlanetSpeed * 0.55f) * 100.0f * 4.0f * 1.3f;
-		zz = cos(glfwGetTime() * PlanetSpeed * 0.55f) * 100.0f * 4.0f * 1.3f;
+		xx = sin(glfwGetTime() * PlanetSpeed * 0.55f) * 100.0f * 0.0f * 1.3f;
+		zz = cos(glfwGetTime() * PlanetSpeed * 0.55f) * 100.0f * 0.0f * 1.3f;
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, texture_earth);
 		model_earth = glm::translate(model_earth, point);
@@ -437,16 +429,40 @@ int main() {
 		Earth.Draw();
 		/* EARTH */
 
+		/* EARTH SCALED */
+		glm::mat4 model_earth_scaled;
+		xx = sin(glfwGetTime() * PlanetSpeed * 0.55f) * 100.0f * 3.0f * 1.3f;
+		zz = cos(glfwGetTime() * PlanetSpeed * 0.55f) * 100.0f * 3.0f * 1.3f;
+		glActiveTexture(GL_TEXTURE0);
+		glBindTexture(GL_TEXTURE_2D, texture_earth);
+		model_earth_scaled = glm::translate(model_earth_scaled, point);
+		model_earth_scaled = glm::rotate(model_earth_scaled, glm::radians(SceneRotateY), glm::vec3(1.0f, 0.0f, 0.0f));
+		model_earth_scaled = glm::rotate(model_earth_scaled, glm::radians(SceneRotateX), glm::vec3(0.0f, 0.0f, 1.0f));
+		model_earth_scaled = glm::translate(model_earth_scaled, glm::vec3(xx, 0.0f, zz));
+		glm::vec3 EarthPoint_scaled = glm::vec3(xx, 0.0f, zz);
+		PlanetsPositions[1] = glm::vec3(xx, 0.0f, zz);
+		model_earth_scaled = glm::rotate(model_earth_scaled, glm::radians(-90.0f), glm::vec3(1.0f, 0.0f, 0.f));
+		model_earth_scaled = glm::rotate(model_earth_scaled, glm::radians(-33.25f), glm::vec3(0.0f, 1.0f, 0.f));
+		model_earth_scaled = glm::rotate(model_earth_scaled, (GLfloat)glfwGetTime() * glm::radians(-33.25f) * 2.0f, glm::vec3(0.0f, 0.0f, 1.f));
+		model_earth_scaled = glm::scale(model_earth_scaled, glm::vec3(3.0f));
+		camera.LookAtPos = glm::vec3(model_earth_scaled[3][0], model_earth_scaled[3][1], model_earth_scaled[3][2]);
+		SimpleShader.setMat4("model", model_earth_scaled);
+		Earth.Draw();
+		/* EARTH SCALED */
+
 		/* MOON */
 		glm::mat4 model_moon;
 		xx = sin(glfwGetTime() * PlanetSpeed * 7.55f) * 100.0f * 0.5f * 1.3f;
 		zz = cos(glfwGetTime() * PlanetSpeed * 7.55f) * 100.0f * 0.5f * 1.3f;
+		float initial_xx = sin(PlanetSpeed * 7.55f) * 100.0f * 0.5f * 1.3f;
+		float initial_zz = cos(PlanetSpeed * 7.55f) * 100.0f * 0.5f * 1.3f;
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, texture_moon);
+		model_moon = glm::translate(model_moon, EarthPoint);
 		model_moon = glm::rotate(model_moon, glm::radians(SceneRotateY), glm::vec3(1.0f, 0.0f, 0.0f));
 		model_moon = glm::rotate(model_moon, glm::radians(SceneRotateX), glm::vec3(0.0f, 0.0f, 1.0f));
-		model_moon = glm::translate(model_moon, EarthPoint);
-		model_moon = glm::translate(model_moon, glm::vec3(xx, 0.0f, zz));
+		// model_moon = glm::translate(model_moon, glm::vec3(xx, 0.0f, zz));
+		model_moon = glm::translate(model_moon, glm::vec3(initial_xx, 0.0f, initial_zz));
 		model_moon = glm::rotate(model_moon, glm::radians(-90.0f), glm::vec3(1.0f, 0.0f, 0.f));
 		model_moon = glm::rotate(model_moon, glm::radians(-32.4f), glm::vec3(0.0f, 1.0f, 0.f));
 		model_moon = glm::rotate(model_moon, (GLfloat)glfwGetTime() * glm::radians(-32.4f) * 3.1f, glm::vec3(0.0f, 0.0f, 1.f));
@@ -458,7 +474,7 @@ int main() {
 		glBindVertexArray(VAO_t);
 		glLineWidth(1.0f);
 		glm::mat4 modelorb;
-		for (float i = 3; i < 3; i++)
+		for (float i = 3; i < 4; i++)
 		{
 			modelorb = glm::mat4(1);
 			modelorb = glm::translate(modelorb, point);
@@ -499,6 +515,12 @@ int main() {
 
 		switch (PlanetView)
 		{
+		case 2:
+			viewX = sin(glfwGetTime() * PlanetSpeed * 0.75f) * 100.0f * 4.5f * 1.2f;
+			viewZ = cos(glfwGetTime() * PlanetSpeed * 0.75f) * 100.0f * 4.5f * 1.2f;
+			viewPos = glm::vec3(viewX, 50.0f, viewZ);
+			view = glm::lookAt(viewPos, PlanetsPositions[1], glm::vec3(0.0f, 1.0f, 0.0f));
+			break;
 
 		case 3:
 			viewX = sin(glfwGetTime() * PlanetSpeed * 0.55f) * 100.0f * 5.5f * 1.2f;
@@ -540,14 +562,14 @@ void processInput(GLFWwindow* window)
 
 	if (glfwGetKey(window, GLFW_KEY_F1) == GLFW_PRESS)
 	{
-		PlanetView = 2;
+		PlanetView = 0;
 		onFreeCam = false;
 		camera.FreeCam = true;
 	}
 
 	if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS)
 	{
-		PlanetView = 2;
+		PlanetView = 0;
 		onFreeCam = true;
 		camera.FreeCam = false;
 		camera.Position = glm::vec3(0.0f, 250.0f, -450.0f);
