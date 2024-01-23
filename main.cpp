@@ -415,43 +415,20 @@ int main() {
 		zz = cos(glfwGetTime() * PlanetSpeed * 0.55f) * 100.0f * 0.0f * 1.3f;
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, texture_earth);
-		// model_earth = glm::translate(model_earth, point);
+		model_earth = glm::translate(model_earth, point);
 		model_earth = glm::rotate(model_earth, glm::radians(SceneRotateY), glm::vec3(1.0f, 0.0f, 0.0f));
 		model_earth = glm::rotate(model_earth, glm::radians(SceneRotateX), glm::vec3(0.0f, 0.0f, 1.0f));
-		// model_earth = glm::translate(model_earth, glm::vec3(xx, 0.0f, zz));
+		model_earth = glm::translate(model_earth, glm::vec3(xx, 0.0f, zz));
 		glm::vec3 EarthPoint = glm::vec3(xx, 0.0f, zz);
 		PlanetsPositions[2] = glm::vec3(xx, 0.0f, zz);
 		model_earth = glm::rotate(model_earth, glm::radians(-90.0f), glm::vec3(1.0f, 0.0f, 0.f));
 		model_earth = glm::rotate(model_earth, glm::radians(-33.25f), glm::vec3(0.0f, 1.0f, 0.f));
 		model_earth = glm::rotate(model_earth, (GLfloat)glfwGetTime() * glm::radians(-33.25f) * 2.0f, glm::vec3(0.0f, 0.0f, 1.f));
+		model_earth = glm::scale(model_earth, glm::vec3(3.0f));
 		camera.LookAtPos = glm::vec3(model_earth[3][0], model_earth[3][1], model_earth[3][2]);
 		SimpleShader.setMat4("model", model_earth);
 		Earth.Draw();
 		/* EARTH */
-
-		/* EARTH SCALED */
-		glm::mat4 model_earth_scaled;
-		xx = sin(glfwGetTime() * PlanetSpeed * 0.55f) * 100.0f * 3.0f * 1.3f;
-		zz = cos(glfwGetTime() * PlanetSpeed * 0.55f) * 100.0f * 3.0f * 1.3f;
-		// float initial_xx = sin(PlanetSpeed * 0.55f) * 100.0f * 3.0f *1.3f;
-		// float initial_zz = cos(PlanetSpeed * 0.55f) * 100.0f * 3.0f *1.3f;
-		glActiveTexture(GL_TEXTURE0);
-		glBindTexture(GL_TEXTURE_2D, texture_earth);
-		model_earth_scaled = glm::translate(model_earth_scaled, point);
-		model_earth_scaled = glm::rotate(model_earth_scaled, glm::radians(SceneRotateY), glm::vec3(1.0f, 0.0f, 0.0f));
-		model_earth_scaled = glm::rotate(model_earth_scaled, glm::radians(SceneRotateX), glm::vec3(0.0f, 0.0f, 1.0f));
-		model_earth_scaled = glm::translate(model_earth_scaled, glm::vec3(xx, 0.0f, zz));
-		// model_moon = glm::translate(model_moon, glm::vec3(xx, 0.0f, zz));
-		glm::vec3 EarthPoint_scaled = glm::vec3(xx, 0.0f, zz);
-		PlanetsPositions[1] = glm::vec3(xx, 0.0f, zz);
-		model_earth_scaled = glm::rotate(model_earth_scaled, glm::radians(-90.0f), glm::vec3(1.0f, 0.0f, 0.f));
-		model_earth_scaled = glm::rotate(model_earth_scaled, glm::radians(-33.25f), glm::vec3(0.0f, 1.0f, 0.f));
-		model_earth_scaled = glm::rotate(model_earth_scaled, (GLfloat)glfwGetTime() * glm::radians(-33.25f) * 2.0f, glm::vec3(0.0f, 0.0f, 1.f));
-		model_earth_scaled = glm::scale(model_earth_scaled, glm::vec3(3.0f));
-		camera.LookAtPos = glm::vec3(model_earth_scaled[3][0], model_earth_scaled[3][1], model_earth_scaled[3][2]);
-		SimpleShader.setMat4("model", model_earth_scaled);
-		Earth.Draw();
-		/* EARTH SCALED */
 
 		/* MOON */
 		glm::mat4 model_moon;
@@ -465,7 +442,7 @@ int main() {
 		model_moon = glm::rotate(model_moon, glm::radians(SceneRotateY), glm::vec3(1.0f, 0.0f, 0.0f));
 		model_moon = glm::rotate(model_moon, glm::radians(SceneRotateX), glm::vec3(0.0f, 0.0f, 1.0f));
 		model_moon = glm::translate(model_moon, glm::vec3(zz, 0.0f, xx));
-		// model_moon = glm::translate(model_moon, glm::vec3(initial_xx, 0.0f, initial_zz));
+		//model_moon = glm::translate(model_moon, glm::vec3(initial_xx, 0.0f, initial_zz));
 		model_moon = glm::rotate(model_moon, glm::radians(-90.0f), glm::vec3(1.0f, 0.0f, 0.f));
 		model_moon = glm::rotate(model_moon, glm::radians(-32.4f), glm::vec3(0.0f, 1.0f, 0.f));
 		model_moon = glm::rotate(model_moon, (GLfloat)glfwGetTime() * glm::radians(-32.4f) * 3.1f, glm::vec3(0.0f, 0.0f, 1.f));
@@ -477,7 +454,7 @@ int main() {
 		glBindVertexArray(VAO_t);
 		glLineWidth(1.0f);
 		glm::mat4 modelorb;
-		for (float i = 3; i < 4; i++)
+		for (float i = 3; i < 3; i++)
 		{
 			modelorb = glm::mat4(1);
 			modelorb = glm::translate(modelorb, point);
